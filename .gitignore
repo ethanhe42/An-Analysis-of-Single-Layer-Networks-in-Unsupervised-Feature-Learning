@@ -56,3 +56,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+#dataset
+datasets/
+kmeans_demo/cifar-10-batches-mat/
