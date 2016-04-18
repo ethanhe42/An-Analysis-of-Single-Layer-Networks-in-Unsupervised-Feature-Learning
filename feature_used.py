@@ -1,3 +1,4 @@
+# just test the password
 import cPickle as pickle
 with open("features.pickle") as f:
     [trainXC,valXC,testXC,y_train,y_val,y_test]=pickle.load(f)
