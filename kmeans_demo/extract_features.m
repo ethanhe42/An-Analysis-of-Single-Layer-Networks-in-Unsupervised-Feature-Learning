@@ -4,7 +4,7 @@ function XC = extract_features(X, centroids, rfSize, CIFAR_DIM, M,P)
   numCentroids = size(centroids,1);
   
   % compute features for all training images
-  XC = zeros(size(X,1), numCentroids*4);
+  XC = zeros(size(X,1), numCentroids*4); % pooling to make it 4K features
   for i=1:size(X,1)
     if (mod(i,1000) == 0) fprintf('Extracting features: %d / %d\n', i, size(X,1)); end
     
@@ -16,6 +16,7 @@ function XC = extract_features(X, centroids, rfSize, CIFAR_DIM, M,P)
     % do preprocessing for each patch
     
     % normalize for contrast
+    %? why var+10
     patches = bsxfun(@rdivide, bsxfun(@minus, patches, mean(patches,2)), sqrt(var(patches,[],2)+10));
     % whiten
     if (whitening)

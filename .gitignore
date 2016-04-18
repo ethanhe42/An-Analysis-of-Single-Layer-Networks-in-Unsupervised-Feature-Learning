@@ -23,7 +23,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-
+*.pickle
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -60,3 +60,5 @@ target/
 #dataset
 datasets/
 kmeans_demo/cifar-10-batches-mat/
+#docs
+*.csv

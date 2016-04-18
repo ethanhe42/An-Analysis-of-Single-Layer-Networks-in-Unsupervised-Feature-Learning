@@ -14,14 +14,14 @@ function centroids = runkmeans(X, k, iterations)
     counts = zeros(k, 1);
     
     loss =0;
-    
+    %batch necessary?
     for i=1:BATCH_SIZE:size(X,1)
       lastIndex=min(i+BATCH_SIZE-1, size(X,1));
       m = lastIndex - i + 1;
-     
+                                        % x^2 is the same omit it
       [val,labels] = max(bsxfun(@minus,centroids*X(i:lastIndex,:)',c2));
       loss = loss + sum(0.5*x2(i:lastIndex) - val');
-      
+      % hard version, not triangle
       S = sparse(1:m,labels,1,m,k,m); % labels as indicator matrix
       summation = summation + S'*X(i:lastIndex,:);
       counts = counts + sum(S,1)';

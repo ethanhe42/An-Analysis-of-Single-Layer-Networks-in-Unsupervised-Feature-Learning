@@ -125,21 +125,7 @@
 % *** Do not adjust lengths that control margins, column widths, etc. ***
 % *** Do not use packages that alter fonts (such as pslatex).         ***
 % There should be no need to do such things with IEEEtran.cls V1.6 and later.
-\usepackage{titlesec}
-\titleformat{\section}
-{\normalfont\Large\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}
-{\normalfont\large\bfseries}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}
-{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
-\titleformat{\paragraph}[runin]
-{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
-\titleformat{\subparagraph}[runin]
-{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
-\titlespacing*{\section}
-{0pt}{1ex}{0ex}
-\titlespacing*{\subsection}
-{0pt}{1ex}{0ex}
+
 
 \usepackage{listings}
 \usepackage{xcolor}
@@ -431,7 +417,10 @@ Avoiding references in languages other than English is recommended.
 	
 	When I'm doing gradient check. I spent great amount of time finding bugs in my code, but still not able to figure out what's wrong with my code. Then, instead of directly comparing gradient errors, I cut gradient check procedure into pieces. Check derivatives sequentially: $\frac{\partial H}{\partial a^{(3)}}$,$\delta^{(3)}$,$\frac{\partial H}{\partial w^{(2)}}$,$\frac{\partial H}{\partial b^{(2)}}$,$\delta^{(2)}...$
 	
-	Tuning hyperparameters is time consuming, I run my program on cloud server all day and save results to \emph{CSV} files.
+	Tuning hyperparameters is really time consuming, I run my program on both on my laptop and CSIL lab. And create 
+	multi threads to speed up. I save training infomations like hyperparameters and accuracy to \emph{CSV} files. View
+	them when the program finish. It saves me a lot of time and avoids hand tuning.
+	
 	
 \section{Possible Improvements}
 	There are some other update methods(Adam, Adagrad, etc) I haven't tried. Maybe they are better than Momentum and RMSprop.

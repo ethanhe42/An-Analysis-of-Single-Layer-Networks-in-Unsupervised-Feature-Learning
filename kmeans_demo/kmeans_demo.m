@@ -1,5 +1,5 @@
 
-CIFAR_DIR='C:\Users\Pomodori\workspace\291K\mp1\kmeans_demo\cifar-10-batches-mat';
+CIFAR_DIR='./cifar-10-batches-mat';
 
 assert(~strcmp(CIFAR_DIR, '/path/to/cifar/cifar-10-batches-mat/'), ...
        ['You need to modify kmeans_demo.m so that CIFAR_DIR points to ' ...
@@ -39,12 +39,13 @@ for i=1:numPatches
 end
 
 % normalize for contrast
+% subtract mean, and normalize by row
 patches = bsxfun(@rdivide, bsxfun(@minus, patches, mean(patches,2)), sqrt(var(patches,[],2)+10));
 
 % whiten
 if (whitening)
   C = cov(patches);
-  M = mean(patches);
+  M = mean(patches);% centralize
   [V,D] = eig(C);
   P = V * diag(sqrt(1./(diag(D) + 0.1))) * V';
   patches = bsxfun(@minus, patches, M) * P;
