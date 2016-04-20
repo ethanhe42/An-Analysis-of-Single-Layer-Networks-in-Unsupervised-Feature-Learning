@@ -237,7 +237,7 @@ class TwoLayerNet(object):
       if np.isnan(grads['W1']).any() or np.isnan(grads['W2']).any() or \
         np.isnan(grads['b1']).any() or np.isnan(grads['b2']).any():
         continue
-      cache_params=self.params.copy()
+     #cache_params=self.params.copy()
       dx=None
       for param in self.params:
         if update=="SGD":
@@ -303,7 +303,7 @@ class TwoLayerNet(object):
         ### update top model
         if val_acc > top_acc:
         	top_acc = val_acc
-        	top_params=cache_params.copy()
+        	top_params=self.params.copy()
 
     	if verbose:
           print ('train_acc %f, val_acc %f, time %d' % (train_acc, val_acc,(time.time()-start_time)/60.0))

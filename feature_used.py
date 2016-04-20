@@ -25,7 +25,7 @@ def tryArgs(hidden_size,momentum,dropout,learning_rate,learning_rate_decay):
     net = TwoLayerNet(input_size, hidden_size, num_classes,1e-4)
     # Train the network
     stats = net.train(trainXC, y_train, valXC, y_val,
-                            num_iters=20000, batch_size=100,
+                            num_iters=15000, batch_size=128,
                             learning_rate=learning_rate, learning_rate_decay=learning_rate_decay,
                             reg=0, verbose=False,update="momentum",arg=momentum,dropout=dropout)
 
@@ -34,22 +34,27 @@ def tryArgs(hidden_size,momentum,dropout,learning_rate,learning_rate_decay):
     train_acc = (net.predict(trainXC) == y_train).mean()
     f=open("feats.csv","a")
     tune=[hidden_size,momentum,dropout,learning_rate,learning_rate_decay]
-    f.write(str(tune).strip("[]")+'\n')
+    f.write(str(tune+[train_acc,val_acc]).strip("[]")+'\n')
     f.close()
-    print hidden_size,learning_rate_dacay,train_acc, val_acc
-
-
-hidden_size = range(150,600,50)
-momentum=[.5,.9,.95,.99]
-dropout=[.3,.5,.7]
+    with open("feats/"+ str([val_acc]+tune).strip("[]")+'.pickle','w') as f:
+        pickle.dump(stats,f)
+    
+    print progress, str(tune+[train_acc,val_acc]).strip("[]")
+hidden_size =[500,300,150]
+momentum=[.9,.95]
+dropout=[.1,.3,.5]
 learning_rate=[5e-4*i for i in range(1,4,20)]
-learning_rate_decay=[.9,.95,.99]
-
+learning_rate_decay=[.95,.99,.999]
+progress=0
 for i in hidden_size:
     for j in momentum:
         for k in dropout:
             for m in learning_rate:
                 for n in learning_rate_decay:
+                    if progress <=1:
+                        progress+=1
+                        continue
+                    progress+=1
                     tryArgs(i,j,k,m,n)
 
 # In[121]:
