@@ -121,10 +121,9 @@ y_pred=np.argmax(np.maximum(0,\
 \section{Model Building}
 	Basically there are two ways to tune a neural net: grid search and random search. For simplicity, I employ grid search to tune 3 hyperparameters: number of neurons in the hidden layer, regularization strength, and learning rate. My tuning procedure is twofold. First, run a coarse-grained search. Second, based on the result of first step, run a fine-grained search around top results.
 	
-	For coarse-grained search, Number of neurons range from 50 to 550, step 50. Regularization strength and learning rate are selected from geometrical sequences. Regularization strength range from $0.5\times10^{-3}$ to $0.5\times10^{2}$, with ratio $10$. Learning rate range from $1\times10^{-5}$ to $1\times10^{-1}$, with ratio $10$. During this, top results have about \textbf{50\%} validation accuracy. Some Top results are shown below:
+	For coarse-grained search, Number of neurons range from 50 to 550, step 50. Regularization strength and learning rate are selected from geometrical sequences. Regularization strength range from $0.5\times10^{-3}$ to $0.5\times10^{2}$, with ratio $10$. Learning rate range from $1\times10^{-5}$ to $1\times10^{-1}$, with ratio $10$. 
+	During this, top results have about \textbf{45\%} validation accuracy. Some Top results are shown below:
 
-	% You can reference tables and figure by using the \ref{label} command. Each table and figure needs to have a UNIQUE label.
-	Figures and tables should be labeled and numbered, such as in Table~\ref{tab:simParameters} and Fig.~\ref{fig:tf_plot}.
 	
 	% This is how you define a table: the [!hbt] means that LaTeX is forced (by the !) to place the table exactly here (by h), or if that doesnt work because of a pagebreak or so, it tries to place the table to the bottom of the page (by b) or the top (by t).
 	\begin{table}[!hbt]
@@ -155,9 +154,9 @@ y_pred=np.argmax(np.maximum(0,\
 	\end{tabular}
 \end{table}
 	For fine-grained search, I picked up one of the above top results. 
-	And search around it's hyperparameters. It can reach a validation accuracy of \textbf{52\%}. 
+	And search around it's hyperparameters. It can reach a validation accuracy of \textbf{50\%}. 
 	After found a suitable set of hyperparameters, I start tuning numbers of iterations, and batch size. 
-	Finally, our original neural network reach a validation accuracy of \textbf{56\%}.
+	Finally, our original neural network reach a validation accuracy of \textbf{52\%}.
 \section{Extra Credits}
 I put results in the next section, in order to compare our original two-layers neural network, with other enhanced neural networks.
 \subsection{momentum and other update methods}
@@ -213,7 +212,7 @@ a2*=(np.random.randn(*a2.shape)<p)/p
 	So I test it with more hidden neurons(500 hidden neurons).
 	Dropout rate is set to be 30\% , 50\% and 70\% empirically.
 	It turns out that the results from these three dropout rates do not differ a lot,
-	with test accuracy ranging from 54\% to 56\%. And it also shows that,
+	with test accuracy ranging from \textbf{54\%} to \textbf{56\%}. And it also shows that,
 	with out L2 regularization, dropout is able to constrain train accuracy not too higher than validation accuracy,
 	which is 73\%.
 	
@@ -319,13 +318,13 @@ for each iterations:
     	\label{Differences between update methods}
     	\begin{tabular}{lllll}
 				& Naive & Dropout & Preprocessed & \\
-	  hidden nodes    & 350   & 500        & 300 & \\
+	  hidden nodes    & 350   & 500        & 200 & \\
 	  learning rate & $1\times10^{-3}$   & $1\times10^{-4}$       & $5\times10^{-4}$ &  \\
 	  learning rate Decay & .95   & .95       & .99 &  \\
 	  regularization & L2,0.05  & Dropout,.5       & Dropout,.3 &  \\
 	  Activation  & ReLU  & Leaky ReLU       & ReLU &  \\
 	  Update method  & SGD  & Momentum,0.9       & Momentum,0.95   &  \\
-	  Iterations & $1\times10^{4}$  & $1\times10^{4}$       & $4\times10^{4}$ &  \\    		
+	  Iterations & $1\times10^{4}$  & $1\times10^{4}$       & $7\times10^{4}$ &  \\    		
 	  Batch size & 100  & 100       & 128 &  \\    		
 	  Time(min)  & 15  & 80       & 110 &     		\\
 	  Train accuracy  & 60\%  & .458       & .80 & \\
