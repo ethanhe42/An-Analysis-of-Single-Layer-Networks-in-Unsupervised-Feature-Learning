@@ -62,3 +62,6 @@ datasets/
 kmeans_demo/cifar-10-batches-mat/
 #docs
 *.csv
+#vim
+*.swp
+

@@ -2,15 +2,20 @@
 # coding: utf-8
 
 # In[59]:
-
+import sys
 from data_utils import load_CIFAR10
 from neural_net import *
 import matplotlib.pyplot as plt
 import time
+if len(sys.argv)!=2:
+    print "something goes wrong,try% python redo.py dataset"
+    quit()
+dataset_dir=sys.argv[1]
 start_time=time.time()
 
 def get_CIFAR10_data(num_training=49000, num_validation=1000, num_test=1000):
-    cifar10_dir = './datasets/cifar-10-batches-py'
+    cifar10_dir = './'+dataset_dir+'/cifar-10-batches-py'
+    print cifar10_dir
     X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)
     mask = range(num_training, num_training + num_validation)
     X_val = X_train[mask]
