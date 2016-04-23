@@ -1,3 +1,1 @@
-./report/* linguist-vendored
-./kmeans_demo/* linguist-vendored
-./paper/* linguist-vendored
+report/* linguist-vendored
