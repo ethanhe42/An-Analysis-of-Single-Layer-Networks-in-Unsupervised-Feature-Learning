@@ -12,3 +12,6 @@ reference:
 #### files
 neural_net.py implement the neural net  
 redo.py implement preprocessing  
+  
+  
+If you have any questions, I'm glad to discuss with you.
