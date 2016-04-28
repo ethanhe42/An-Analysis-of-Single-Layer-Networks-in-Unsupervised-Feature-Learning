@@ -1,4 +1,4 @@
-### Single Layer neural network  
+### Single Layer neural network
 Single Layer neural network's performence is not so good.  
 Which have accuracy of 55% on CIFAR-10  
 However, with two images preprocessing techniques(PCA whintening and Kmeans), it can reach 75% on CIFAR-10  
@@ -9,9 +9,9 @@ reference:
 1. Put cifar-10 dataset in ./dataset
 2. run python redo.py dataset
 
-#### files
+#### files description
 neural_net.py implement the neural net  
 redo.py implement preprocessing  
   
   
-If you have any questions, I'm glad to discuss with you.
+######If you have any questions, I'm glad to discuss with you.
