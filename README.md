@@ -12,6 +12,9 @@ reference:
 #### files description
 neural_net.py implement the neural net  
 redo.py implement preprocessing  
+The accuracy of different combinations of hyperparameters are shown in two *.csv* files  
+[here](https://github.com/yihui-he/Single-Layer-neural-network-with-PCAwhitening-Kmeans/blob/master/fine_grained_nn.csv) and [here](https://github.com/yihui-he/Single-Layer-neural-network-with-PCAwhitening-Kmeans/blob/master/naive_nn.csv)  
+Other files are not important, written for comparing different techniques and searching for parameters  
   
   
 ######If you have any questions, I'm glad to discuss with you.
